@@ -1,14 +1,29 @@
+const tasks=document.querySelector(".tasks")
+const addButton=document.querySelector(".addButton")
+const input=document.querySelector(".input")
+let tasksList=[]
 
-const increment = document.querySelector(".increment")
-const decrement = document.querySelector(".decrement")
-const count = document.querySelector(".count")
-let acum = 0
 
-increment.addEventListener("click", () => {
-    ++acum
-    count.innerHTML = acum
+const Rerendering=()=>{
+    tasks.innerHTML=''
+    tasksList.forEach((item,index)=>{
+        tasks.innerHTML+=`<li class="item">
+        <span class="text ">${item.task}</span>
+        <div class="buttons">
+            <img class="done" src="./images/Vector.svg" alt="">
+            <img class="delete" onclick="deleteClick(\'${item.task}\')" src="./images/↳ Icon Color.svg" alt="">
+        </div>
+    </li> `
+    })
+}
+addButton.addEventListener("click",()=>{
+    const value=input.value
+    tasksList.push({task:value})
+    Rerendering()
 })
-decrement.addEventListener("click", () => {
-    --acum
-    count.innerHTML = acum
-})
+
+function deleteClick(task){
+    const currentIndex=tasksList.findIndex(v=>v.task===task)
+    tasksList.splice(currentIndex,1)
+    Rerendering()
+}
