@@ -1,0 +1,15 @@
+@import "header";
+@import "nullstyle";
+@import "layout";
+@import "fonts";
+@import 'adaptivePropertyMixin';
+
+
+.header {
+    &__title {
+        font-family: "Inter";
+        font-weight: 600;
+        @include resAdaptCards(0px,0,0);
+        }        
+}
+
