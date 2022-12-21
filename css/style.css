@@ -172,6 +172,9 @@ justify-content: space-between;
   color: #000000;
 
 }
+.done{
+  text-decoration: line-through;
+}
 .buttons{
   display: flex;
   align-items: center;
